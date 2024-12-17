@@ -1,0 +1,27 @@
+# db variables
+HOST_IP='amopuatpostgresdb.c3qae66ke1lg.us-east-1.rds.amazonaws.com'
+SERVER_IP='5432'
+LOCAL_DB_PASSWORD='AlgoTeam123'
+LOCAL_DB_NAME='root'
+LOCAL_DB_USER='root'
+
+# purging database variables
+Purgedatabase_output_path=''
+S3_bucket_name=''
+Purgedatabase_output_file=''
+
+# Logging variables
+LOG_LEVEL=debug
+LOG_LEVEL_NON_DEBUG=warning
+LOG_FORMAT="%(asctime)s - [%(traceID)s] - %(levelname)s - [%(tenantID)s] - [%(fileName)s] - [%(currentFuncName)s] - [%(calledbyFuncName)s] - %(lineNo)s - %(message)s"
+
+# Zitadel variables
+ZITADEL_URL=""
+
+
+DB_DATABASE_main = AmopAlgouatDB
+DB_HOST = amopuatpostgresdb.c3qae66ke1lg.us-east-1.rds.amazonaws.com
+DB_USER = root
+DB_PASSWORD = AlgoTeam123
+DB_PORT = 5432
+DB_DATABASE_common_utils = AmopAlgouatDB
