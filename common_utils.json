@@ -1,0 +1,3097 @@
+{
+    "amop_apis": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_url",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_params",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_state",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "env",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_sync_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_date_time",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "audit_lamda": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "service_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "status",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "time_consumed_secs",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "session_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "comments",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "request_received_at",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "service_provider_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "trace_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "audit_schedulers": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "service_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "status",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "time_consumed_secs",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "session_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "comments",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "request_received_at",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "service_provider_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "trace_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "audit_user_actions": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "service_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "status",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "time_consumed_secs",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "session_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "comments",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "request_received_at",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "service_provider_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "trace_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "carrier_apis": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "service_provider_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_url",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_params",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_state",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "env",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_date_time",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "email_audit": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "template_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email_type",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email_status",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "from_email",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "to_email",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "cc_email",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "subject",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "body",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "comments",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "parents_module_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_module_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "child_module_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "reports_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "template_type",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "action",
+            "type": "VARCHAR(250)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "email_templates": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "template_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email_type",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "to_mail",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "cc_mail",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "subject",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "body",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "attachments",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_email_triggered_at",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email_status",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role_based",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "template_type",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "reports_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "parents_module_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_module_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "child_module_name",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email_frequency",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "error_log_table": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "service_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "error_message",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "error_type",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "users",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "session_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "comments",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "request_received_at",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "export_queries": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_query",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "field_column_mapping": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "display_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "type",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "pop_col",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "mandatory",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "default_value",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "date",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "db_column_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_col",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_header_order",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "field_column_mapping_titanium": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "display_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "type",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "pop_col",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "mandatory",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "default_value",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "date",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "db_column_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_col",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_header_order",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "live_sessions": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "username",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "access_token",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "status",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "login",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "logout",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_request",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "session_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "mapping_table": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "db_name_20",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "transfer_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "db_name_10",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "table_mapping_10_to_20",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "col_mapping_10_to_20",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "db_config",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "postgres_config",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "reverse_table_mapping",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "reverse_col_mapping",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "return_params_10",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "fk_cols_10",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "data_from_10",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "update_cond_cols",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "master_amop_apis": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_url",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_params",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_state",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "env",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_sync_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_date_time",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "master_carrier_apis": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "service_provider_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_url",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_params",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "api_state",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_by",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "env",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_date_time",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "master_roles": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "role_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "module": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "submodule_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "submodule_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "parent_module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "module_column_mappings": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "columns_mapped",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "master_data_flag",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tables_mapped",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "view_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "condition",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "drop_down_col",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "main_update_table",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_table_mapping",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "unique_columns",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "order_by",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_filter",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "combine",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "module_features": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "module",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "features",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "module_view_queries": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_query",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "open_search_index": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "search_module",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "search_tables",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "search_cols",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "relations",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "index_search_type",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "partner_authentication": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "client_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "client_key",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "role_module": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "role",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_module",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_features",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "roles": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "role_name",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "bulk_change_type_id_list",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "service_accounts": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "client_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "client_secret",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tax_profile",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "user_id",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "phone",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "tenant": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_tenant_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email_ids",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "client_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "client_secret_key",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "parent_tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "logo",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "db_name",
+            "type": "VARCHAR(80)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "partner_provider_schema",
+            "type": "VARCHAR(1024)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "service_provider_to",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "service_provider_status",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "billing_address_1",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "billing_address_2",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "billing_city",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "billing_state",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "billing_zip_code",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "billing_notes",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "cross_provider_customer_optimization",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_address_1",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_addresss_2",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_apt_or_suite",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_city",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_state",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_zip_code",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_country",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "physical_county",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "time_zone",
+            "type": "VARCHAR(200)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_10_partner",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "tenant_module": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_tenant_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "submodule_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "submodule_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "logo",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "user_module_tenant_mapping": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_module",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_names",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "user_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_features",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "user_prod": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "tenant_id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "username",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "password",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "salt",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "new_password_needed",
+            "type": "SMALLINT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_login",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "name",
+            "type": "VARCHAR(120)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "active",
+            "type": "SMALLINT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "first_name",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_name",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "phone",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "mobile_phone",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "business_name",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "time_zone",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "locale",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "apt_suite",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "address1",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "address2",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "city",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "county_parish_borough",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "state",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "postal_code",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "country",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_auth_api_migrated",
+            "type": "BOOLEAN",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "auth_api_provider_name",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "user_role_prod": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role_id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": false,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "user_role_site": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "site_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "site_group_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "subscribes_to_notifications",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "bandwidth_site_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ],
+    "users": [
+        {
+            "name": "id",
+            "type": "INTEGER",
+            "nullable": false,
+            "primary_key": true,
+            "autoincrement": true
+        },
+        {
+            "name": "tenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "tenant_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "subtenant_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "subtenant_name",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "username",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "password",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "role",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "email",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_login",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "active",
+            "type": "SMALLINT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "first_name",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_name",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "phone",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "mobile_phone",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "business_name",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "locale",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "apt_suite",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "address1",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "address2",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "country",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "state",
+            "type": "VARCHAR(50)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "timezone",
+            "type": "VARCHAR(150)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "zip",
+            "type": "VARCHAR(20)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "created_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_date",
+            "type": "TIMESTAMP",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "deleted_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "is_deleted",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "last_modified_by",
+            "type": "VARCHAR(100)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_module_name",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "sub_module_id",
+            "type": "INTEGER",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "module_features",
+            "type": "JSONB",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "migrated",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "temp_password",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "mode",
+            "type": "VARCHAR(255)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "theme",
+            "type": "VARCHAR(128)",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "customer_group",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "customers",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "service_provider",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "city",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "access_token",
+            "type": "TEXT",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "user_id",
+            "type": "VARCHAR",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        },
+        {
+            "name": "performance_feature",
+            "type": "BOOLEAN",
+            "nullable": true,
+            "primary_key": false,
+            "autoincrement": false
+        }
+    ]
+}
