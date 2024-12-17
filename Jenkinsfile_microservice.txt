@@ -1,0 +1,203 @@
+pipeline {
+    agent any
+    
+    environment {
+        AWS_DEFAULT_REGION = 'ap-south-1'  
+        AWS_ACCOUNT_ID = '590818437618' 
+        LAMBDA_ROLE = 'arn:aws:iam::590818437618:role/TejSecondLambdaExecutionRoleNewUnique' 
+        S3_BUCKET = 'amopuiupdate'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git credentialsId: '42f0cc76-11a9-4b8d-8fe7-724047202ae4', url: 'https://github.com/algonox/Amop.git', branch: 'amop_2.0'
+            }
+        }
+        
+        stage('Build and Deploy Lambda Layer') {
+            steps {
+                script {
+                    // Zip common_utils folder for Lambda layer
+                    echo "Creating Lambda layer ZIP for CommonUtils"
+                    sh """
+                    mkdir -p package/python/lib/python3.9/site-packages
+                    pip install -r requirements.txt --target package/python/lib/python3.9/site-packages/
+
+                    # Debug: Check if common_utils exists
+                    if [ ! -d "common_utils" ]; then
+                        echo "Error: common_utils directory does not exist."
+                        exit 1
+                    fi
+
+                    cp -r common_utils package/python/lib/python3.9/site-packages/
+                    cd package
+                    ls
+                    zip -r ../library.zip python
+                    cd ..                    
+                    # Debug: List files to confirm library.zip creation
+                    ls -l library.zip
+                    """
+    
+
+                    // Upload Lambda layer ZIP to S3
+                    withAWS(region: AWS_DEFAULT_REGION, credentials: '1a1b3eaa-4ffb-4faf-836d-ec816d459b81') {
+                        echo "Uploading Lambda layer ZIP to S3"
+                        sh """
+                        aws s3 cp library.zip s3://${S3_BUCKET}/library.zip
+                        """
+                    }
+                    
+                    // Deploy Lambda layer and capture layerArn
+                    def layerArn = deployLambdaLayer()
+                    
+                    // Pass layerArn to next stage (Lambda function deployment)
+                    env.layerArn = layerArn
+                }
+            }
+        }
+        
+        stage('Build and Deploy Lambda Function') {
+            steps {
+                script {
+                    // Zip user_authentication folder for Lambda function
+                    echo "Creating Lambda function ZIP for user_authentication"
+                    sh """
+                    cd user_authentication
+                    zip -r ../user_authentication.zip .
+                    """
+                    
+                    // Deploy Lambda function with captured layerArn
+                    deployLambdaFunction(env.layerArn)
+                }
+            }
+        }
+    }
+}
+
+// Function to deploy Lambda layer and return layerArn
+def deployLambdaLayer() {
+    echo "Deploying Lambda layer"
+    withAWS(region: AWS_DEFAULT_REGION, credentials: '1a1b3eaa-4ffb-4faf-836d-ec816d459b81') {
+        def layerName = 'library'
+        def layerZipFilePath = 'library.zip'
+        
+        // Check if Lambda layer exists
+        def layerExists = sh(
+            script: "aws lambda get-layer-version --layer-name ${layerName}",
+            returnStatus: true
+        ) == 0
+
+        if (layerExists) {
+            echo "Updating existing Lambda layer"
+            s3Upload(
+                bucket: S3_BUCKET, 
+                file: layerZipFilePath,
+                path: "{layerName}.zip"
+            )
+            // Update Lambda layer code and configuration
+            sh """
+            aws lambda update-layer-code --layer-name ${layerName} --s3-bucket ${S3_BUCKET} --s3-key lambda/${layerName}.zip
+            """
+        } else {
+            echo "Creating new Lambda layer"
+            //Upload Lambda layer code
+            s3Upload(
+                bucket: S3_BUCKET, 
+                file: layerZipFilePath,
+                path: "lambda/${layerName}.zip"
+            )
+
+            // Create Lambda layer
+            def layerArn = sh(
+                script: """
+                aws lambda publish-layer-version \
+                    --layer-name ${layerName} \
+                    --description "Common utilities layer" \
+                    --compatible-runtimes python3.9 \
+                    --license-info "MIT" \
+                    --content S3Bucket=${S3_BUCKET},S3Key=library.zip \
+                    --query 'LayerVersionArn' \
+                    --output text
+                """,
+                returnStdout: true
+            ).trim()
+            
+            echo "Created new Lambda layer ARN: ${layerArn}"
+            return layerArn 
+            // Return layerArn
+        }
+    }
+    
+}
+
+
+
+// Function to deploy Lambda function using layerArn
+def deployLambdaFunction(layerArn) {
+    echo "Deploying Lambda function"
+    layerArn= 
+    withAWS(region: AWS_DEFAULT_REGION, credentials: '1a1b3eaa-4ffb-4faf-836d-ec816d459b81') {
+        def functionName = 'user_authentication'
+        def functionZipFilePath = 'user_authentication.zip'
+        
+        // Function to update or create Lambda function
+        def updateOrCreateLambda = {
+            // Check if Lambda function exists
+            def lambdaExists = sh(
+                script: "aws lambda get-function --function-name ${functionName}",
+                returnStatus: true
+            ) == 0
+
+            if (lambdaExists) {
+                echo "Updating existing Lambda function"
+                s3Upload(
+                    bucket: S3_BUCKET, 
+                    file: functionZipFilePath,
+                    path: "lambda/${functionName}.zip"
+                )
+                // Update Lambda function code and configuration
+                sh """
+                aws lambda update-function-code --function-name ${functionName} --s3-bucket ${S3_BUCKET} --s3-key lambda/${functionName}.zip
+                aws lambda update-function-configuration --function-name ${functionName} --handler user_login.login --runtime python3.9 --role ${LAMBDA_ROLE} --layers ${layerArn}
+                """
+            } else {
+                echo "Creating new Lambda function"
+
+                // Upload Lambda function code
+                s3Upload(
+                    bucket: S3_BUCKET, 
+                    file: functionZipFilePath,
+                    path: "lambda/${functionName}.zip"
+                )
+
+                // Create Lambda function
+                sh """
+                aws lambda create-function \
+                    --function-name ${functionName} \
+                    --runtime python3.9 \
+                    --role ${LAMBDA_ROLE} \
+                    --handler user_login.login \
+                    --code S3Bucket=${S3_BUCKET},S3Key=lambda/${functionName}.zip \
+                    --layers ${layerArn}
+                """
+                
+            }
+        }
+
+        // Retry logic for Lambda update operation
+        retry(3) {
+            try {
+                updateOrCreateLambda()
+            } catch (Exception e) {
+                echo "Caught exception: $e"
+                error "Failed to deploy Lambda function: $e"
+            }
+        }
+    }
+}
+
+// Function to upload files to S3 bucket
+def s3Upload(params) {
+    sh "aws s3 cp ${params.file} s3://${params.bucket}/${params.path}"
+}

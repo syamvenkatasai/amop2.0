@@ -1,0 +1,183 @@
+pipeline {
+    agent any
+    
+    environment {
+        AWS_DEFAULT_REGION = 'ap-south-1'
+        AWS_ACCOUNT_ID = '590818437618'
+        LAMBDA_ROLE = 'arn:aws:iam::590818437618:role/TejSecondLambdaExecutionRoleNewUnique'
+        S3_BUCKET = 'amopuiupdate'
+        deploy = 'dev'
+        LAMBDA_FUNCTION_NAME = 'microLambdaFunction'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git credentialsId: '42f0cc76-11a9-4b8d-8fe7-724047202ae4', url: 'https://github.com/algonox/Amop.git', branch: 'amop_2.0'
+            }
+        }
+        
+        stage('Build Lambda Function') {
+            steps {
+                script {
+                    // Zip Lambda function code
+                    sh """
+                    cd micro
+                    zip -r ../lambda_function.zip .
+                    """
+                }
+            }
+        }
+        
+        stage('Upload to S3') {
+            steps {
+                script {
+                    withAWS(region: AWS_DEFAULT_REGION, credentials: '1a1b3eaa-4ffb-4faf-836d-ec816d459b81') {
+                        // Upload the zip file to S3
+                        sh """
+                        aws s3 cp lambda_function.zip s3://$S3_BUCKET/lambda_function.zip
+                        """
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy Lambda Function') {
+            steps {
+                script {
+                    // Deploy Lambda function
+                    withAWS(region: AWS_DEFAULT_REGION, credentials: '1a1b3eaa-4ffb-4faf-836d-ec816d459b81') {
+                        def lambdaExists = sh(script: "aws lambda get-function --function-name $LAMBDA_FUNCTION_NAME", returnStatus: true) == 0
+                        
+                        if (lambdaExists) {
+                            // Update Lambda function code and configuration
+                            sh """
+                            aws lambda update-function-code \
+                                --function-name $LAMBDA_FUNCTION_NAME \
+                                --zip-file fileb://lambda_function.zip
+                            """
+                            
+                            sh """
+                            aws lambda update-function-configuration \
+                                --function-name $LAMBDA_FUNCTION_NAME \
+                                --handler main.lambda_handler \
+                                --runtime python3.8 \
+                                --role $LAMBDA_ROLE
+                            """
+                        } else {
+                            // Create Lambda function
+                            sh """
+                            aws lambda create-function \
+                                --function-name $LAMBDA_FUNCTION_NAME \
+                                --runtime python3.8 \
+                                --role $LAMBDA_ROLE \
+                                --handler main.lambda_handler \
+                                --code S3Bucket=$S3_BUCKET,S3Key=lambda_function.zip
+                            """
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Create API Gateway') {
+            steps {
+                script {
+                    withAWS(region: AWS_DEFAULT_REGION, credentials: '1a1b3eaa-4ffb-4faf-836d-ec816d459b81') {
+                        def apiId = sh(script: """
+                        aws apigateway create-rest-api --name 'microservice-test' --region $AWS_DEFAULT_REGION --query 'id' --output text
+                        """, returnStdout: true).trim()
+                        
+                        def rootResourceId = sh(script: """
+                        aws apigateway get-resources --rest-api-id $apiId --region $AWS_DEFAULT_REGION --query 'items[0].id' --output text
+                        """, returnStdout: true).trim()
+                        
+                        def createResource = { String pathPart ->
+                            // Replace invalid characters in path part
+                            def sanitizedPathPart = pathPart.replaceAll('[^a-zA-Z0-9._-]', '')
+                            sh(script: """
+                            aws apigateway create-resource \
+                                --rest-api-id $apiId \
+                                --parent-id $rootResourceId \
+                                --path-part '$sanitizedPathPart' \
+                                --query 'id' --output text
+                            """, returnStdout: true).trim()
+                        }
+                        
+                        def createMethod = { String resourceId, String httpMethod, String path ->
+                            sh """
+                            aws apigateway put-method \
+                                --rest-api-id $apiId \
+                                --resource-id $resourceId \
+                                --http-method $httpMethod \
+                                --authorization-type NONE \
+                                --request-parameters method.request.querystring.param1=true \
+                                --request-parameters method.request.querystring.param2=true
+                            """
+                            
+                            sh """
+                            aws apigateway put-integration \
+                                --rest-api-id $apiId \
+                                --resource-id $resourceId \
+                                --http-method $httpMethod \
+                                --type AWS \
+                                --integration-http-method POST \
+                                --uri "arn:aws:apigateway:${AWS_DEFAULT_REGION}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS_DEFAULT_REGION}:${AWS_ACCOUNT_ID}:function:${LAMBDA_FUNCTION_NAME}/invocations"
+                            """
+                           
+                            // Add method response for CORS
+                           def command = """
+                                aws apigateway put-method-response \\
+                                    --rest-api-id $apiId \\
+                                    --resource-id $resourceId \\
+                                    --http-method $httpMethod \\
+                                    --status-code 200 \\
+                                     --response-parameters '{\"method.response.header.Access-Control-Allow-Headers\":true,\"method.response.header.Access-Control-Allow-Methods\":true,\"method.response.header.Access-Control-Allow-Origin\":true}'
+                                """
+                            
+                            echo "Executing command: ${command}"
+                            sh(script: command)
+                        }
+                        
+                        def createDeployment = {
+                            sh """
+                            aws apigateway create-deployment \
+                                --rest-api-id $apiId \
+                                --stage-name $deploy
+                            """
+                        }
+                        
+                        // Create resources and methods for both endpoints
+                        def resource1Id = createResource('api-function1')
+                        createMethod(resource1Id, 'GET', '/api-function1')
+                        
+                        def resource2Id = createResource('api-function2')
+                        createMethod(resource2Id, 'GET', '/api-function2')
+                        
+                        createDeployment()
+                        
+                        env.API_GATEWAY_ID = apiId
+                        env.RESOURCE_ID1 = resource1Id
+                        env.RESOURCE_ID2 = resource2Id
+                    }
+                }
+            }
+        }
+        
+        stage('Test Endpoints') {
+            steps {
+                script {
+            def baseUrl = "https://${env.API_GATEWAY_ID}.execute-api.${AWS_DEFAULT_REGION}.amazonaws.com/${deploy}"
+            
+            // Test Endpoint 1 with query parameters
+            def response1 = sh(script: "curl -s -X GET '${baseUrl}/api-function1?param1=value1&param2=value2'", returnStdout: true).trim()
+            echo "Response from Endpoint /api/function1: ${response1}"
+            
+            // Test Endpoint 2 with query parameters
+            def response2 = sh(script: "curl -s -X GET '${baseUrl}/api-function2?param1=value1&param2=value2'", returnStdout: true).trim()
+            echo "Response from Endpoint /api/function2: ${response2}"
+                }
+            }
+        }
+    }
+}
