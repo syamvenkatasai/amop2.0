@@ -1,0 +1,4 @@
+# LOCAL_DB_HOST=amoppostgresdbsandbox.c3qae66ke1lg.us-east-1.rds.amazonaws.com
+LOCAL_DB_HOST=amopuatpostgresdb.c3qae66ke1lg.us-east-1.rds.amazonaws.com
+LOCAL_DB_USER=root
+LOCAL_DB_PASSWORD=AlgoTeam123
